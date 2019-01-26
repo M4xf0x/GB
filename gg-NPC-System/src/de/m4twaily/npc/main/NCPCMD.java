@@ -14,11 +14,36 @@ public class NCPCMD implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 
-			npc = Main.npc;
+			if (p.hasPermission("gg.npc")) {
 
-			npc.setNPCValues(p, Integer.parseInt(args[0]));
-			npc.sendPackets(p);
+				if (args.length == 1) {
 
+					if (args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("2")) {
+
+						npc = Main.npc;
+
+						npc.setNPCValues(p, Integer.parseInt(args[0]));
+						npc.sendPackets(p);
+
+						p.sendMessage(" ");
+						p.sendMessage("§a§lNPC §8» §7NPC Nummer " + args[0] + " wurde gesetzt.");
+						p.sendMessage(" ");
+
+					} else {
+
+						p.sendMessage(" ");
+						p.sendMessage("§a§lNPC §8» §cUsage: /npc 1/2");
+						p.sendMessage(" ");
+
+					}
+				} else {
+
+					p.sendMessage(" ");
+					p.sendMessage("§a§lNPC §8» §cUsage: /npc 1/2");
+					p.sendMessage(" ");
+
+				}
+			}
 		}
 
 		return false;

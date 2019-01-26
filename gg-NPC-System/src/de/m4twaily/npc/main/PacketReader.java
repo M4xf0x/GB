@@ -6,7 +6,6 @@ import io.netty.handler.codec.MessageToMessageDecoder;
 import java.lang.reflect.Field;
 import java.util.List;
 import net.minecraft.server.v1_8_R3.Packet;
-import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
@@ -52,13 +51,14 @@ public class PacketReader {
 
 				if (getValue(packet, "action").toString().equalsIgnoreCase("INTERACT")) {
 
-					Bukkit.broadcastMessage("§aWorking");
+					this.player.performCommand("rewards");
+					
 				}
 
 			}
 		}
 	}
-
+	
 	public void setValue(Object obj, String name, Object value) {
 		try {
 
