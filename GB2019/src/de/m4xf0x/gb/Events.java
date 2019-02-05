@@ -122,31 +122,73 @@ public class Events implements Listener {
 		Player p = e.getEntity();
 
 		if (p.getKiller() instanceof Player) {
-			
+
+			Lifes.load();
+			Player killer = p.getKiller();
+			String killerName = p.getKiller().getName();
+
 			if (Teams.red.contains(p)) {
-				e.setDeathMessage(Main.p + "§4 " + p.getName() + " ist gestorben");
-				Bukkit.broadcastMessage("");
+
+				if (Teams.red.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §4§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[0] + " Leben");
+
+				} else if (Teams.green.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §2§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[0] + " Leben");
+
+				} else if (Teams.blue.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §3§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[0] + " Leben");
+
+				}
 
 			} else if (Teams.green.contains(p)) {
-				e.setDeathMessage(Main.p + "§2 " + p.getName() + " ist gestorben");
+
+				if (Teams.red.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §4§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[1] + " Leben");
+
+				} else if (Teams.green.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §2§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[1] + " Leben");
+
+				} else if (Teams.blue.contains(killer)) {
+					e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7wurde von §3§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §4§lRot §7hat noch " + Lifes.TeamLifes[1] + " Leben");
+
+				}
 
 			} else if (Teams.blue.contains(p)) {
-				e.setDeathMessage(Main.p + "§3 " + p.getName() + " ist gestorben");
+
+				if (Teams.red.contains(killer)) {
+					e.setDeathMessage(Main.p + "§3§l" + p.getName() + " §7wurde von §4§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §3§lRot §7hat noch " + Lifes.TeamLifes[2] + " Leben");
+
+				} else if (Teams.green.contains(killer)) {
+					e.setDeathMessage(Main.p + "§3§l" + p.getName() + " §7wurde von §2§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §3§lRot §7hat noch " + Lifes.TeamLifes[2] + " Leben");
+
+				} else if (Teams.blue.contains(killer)) {
+					e.setDeathMessage(Main.p + "§3§l" + p.getName() + " §7wurde von §3§l" + killerName + " §7getötet");
+					Bukkit.broadcastMessage(Main.p + "Team §3§lRot §7hat noch " + Lifes.TeamLifes[2] + " Leben");
+
+				}
 
 			} else {
-				e.setDeathMessage(Main.p + "§7 " + p.getName() + " ist gestorben");
+				e.setDeathMessage(Main.p + "§7" + p.getName() + " §7wurde von " + killerName);
 			}
-			
+
 		} else {
 
 			if (Teams.red.contains(p)) {
-				e.setDeathMessage(Main.p + "§4 " + p.getName() + " ist gestorben");
+				e.setDeathMessage(Main.p + "§4§l" + p.getName() + " §7ist gestorben");
 
 			} else if (Teams.green.contains(p)) {
-				e.setDeathMessage(Main.p + "§2 " + p.getName() + " ist gestorben");
+				e.setDeathMessage(Main.p + "§2§l" + p.getName() + " §7ist gestorben");
 
 			} else if (Teams.blue.contains(p)) {
-				e.setDeathMessage(Main.p + "§3 " + p.getName() + " ist gestorben");
+				e.setDeathMessage(Main.p + "§3§l" + p.getName() + " §7ist gestorben");
 
 			} else {
 				e.setDeathMessage(Main.p + "§7 " + p.getName() + " ist gestorben");
