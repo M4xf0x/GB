@@ -1,0 +1,58 @@
+Website: http://192.168.178.22/gb
+Challenges:
+  pw1: nfs
+  pw2: nhj
+  pw3: na
+  pw4: ns
+  pw5: mn
+  pw6: mk
+  
+Lifes:
+  Team1: 3
+  Team2: 3
+  Team3: 3
+
+Match:
+   Time: 0
+   
+Deathmatch:
+  Active: true
+  Build: false
+  Time: 0
+  
+Teams:
+  Ready: false
+  Red:
+    Player1: 'Pl1'
+    Player2: 'Pl2'
+  Green:
+    Player1: 'Pl1'
+    Player2: 'Pl2'
+  Blue:
+    Player1: 'Pl1'
+    Player2: 'Pl2'
+    
+Spawns:
+  World: world
+  Team1:
+    Ready: false 
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10
+  Team2:
+    Ready: false
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10
+  Team3:
+    Ready: false
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10
+    
