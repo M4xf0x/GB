@@ -1,11 +1,35 @@
 Website: http://192.168.178.22/gb
 Challenges:
-  pw1: nfs
-  pw2: nhj
-  pw3: na
-  pw4: ns
-  pw5: mn
-  pw6: mk
+  pw1: 
+    password: pw1
+    done1: false
+    done2: false
+    done3: false
+  pw2: 
+    password: pw2
+    done1: false
+    done2: false
+    done3: false
+  pw3: 
+    password: pw3
+    done1: false
+    done2: false
+    done3: false
+  pw4: 
+    password: pw4
+    done1: false
+    done2: false
+    done3: false
+  pw5: 
+    password: pw5
+    done1: false
+    done2: false
+    done3: false
+  pw6: 
+    password: pw6
+    done1: false
+    done2: false
+    done3: false
   
 Lifes:
   Team1: 3
@@ -13,7 +37,8 @@ Lifes:
   Team3: 3
 
 Match:
-   Time: 0
+  Active: true 
+  Time: 0
    
 Deathmatch:
   Active: true

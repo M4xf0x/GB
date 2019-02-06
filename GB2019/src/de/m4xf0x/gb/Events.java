@@ -31,13 +31,13 @@ public class Events implements Listener {
 		Teams.load();
 
 		if (Teams.isInTeam(p, 1)) {
-			e.setJoinMessage(s + "§4" + p.getName());
+			e.setJoinMessage(s + "§4§l" + p.getName());
 
 		} else if (Teams.isInTeam(p, 2)) {
-			e.setJoinMessage(s + "§2" + p.getName());
+			e.setJoinMessage(s + "§2§l" + p.getName());
 
 		} else if (Teams.isInTeam(p, 3)) {
-			e.setJoinMessage(s + "§3" + p.getName());
+			e.setJoinMessage(s + "§3§l" + p.getName());
 
 		} else
 			e.setJoinMessage(s + "§7" + p.getName());
@@ -60,13 +60,13 @@ public class Events implements Listener {
 		Teams.load();
 
 		if (Teams.isInTeam(p, 1)) {
-			e.setQuitMessage(s + "§4" + p.getName());
+			e.setQuitMessage(s + "§4§l" + p.getName());
 
 		} else if (Teams.isInTeam(p, 2)) {
-			e.setQuitMessage(s + "§2" + p.getName());
+			e.setQuitMessage(s + "§2§l" + p.getName());
 
 		} else if (Teams.isInTeam(p, 3)) {
-			e.setQuitMessage(s + "§3" + p.getName());
+			e.setQuitMessage(s + "§3§l" + p.getName());
 
 		} else {
 			e.setQuitMessage(s + "§7" + p.getName());

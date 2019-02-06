@@ -132,9 +132,11 @@ public class admin implements CommandExecutor {
 					// TODO Must be edited
 					if (Teams.red[0] == null) {
 						Teams.red[0] = target;
+						Teams.save();
 
 					} else {
 						Teams.red[1] = target;
+						Teams.save();
 					}
 
 					p.sendMessage(Main.p + "" + target.getName() + " in Team " + args[2] + " gesetzt");
@@ -147,7 +149,7 @@ public class admin implements CommandExecutor {
 
 				if (Teams.red[0] == target) {
 					System.out.println("Removing " + args[1] + " from Team Red 0");
-					Teams.red[1] = null;
+					Teams.red[0] = null;
 					Teams.save();
 
 				}
@@ -161,7 +163,7 @@ public class admin implements CommandExecutor {
 
 				if (Teams.blue[0] == target) {
 					System.out.println("Removing " + args[1] + " from Team Blue 0");
-					Teams.blue[1] = null;
+					Teams.blue[0] = null;
 					Teams.save();
 
 				}
@@ -178,9 +180,11 @@ public class admin implements CommandExecutor {
 					// TODO Must be edited
 					if (Teams.green[0] == null) {
 						Teams.green[0] = target;
+						Teams.save();
 
 					} else {
 						Teams.green[1] = target;
+						Teams.save();
 					}
 
 					p.sendMessage(Main.p + "" + target.getName() + " in Team " + args[2] + " gesetzt");
@@ -193,7 +197,7 @@ public class admin implements CommandExecutor {
 
 				if (Teams.green[0] == target) {
 					System.out.println("Removing " + args[1] + " from Team Green 0");
-					Teams.green[1] = null;
+					Teams.green[0] = null;
 					Teams.save();
 
 				}
@@ -207,7 +211,7 @@ public class admin implements CommandExecutor {
 
 				if (Teams.red[0] == target) {
 					System.out.println("Removing " + args[1] + " from Team Red 0");
-					Teams.red[1] = null;
+					Teams.red[0] = null;
 					Teams.save();
 
 				}
@@ -224,9 +228,11 @@ public class admin implements CommandExecutor {
 					// TODO Must be edited
 					if (Teams.blue[0] == null) {
 						Teams.blue[0] = target;
+						Teams.save();
 
 					} else {
 						Teams.blue[1] = target;
+						Teams.save();
 					}
 
 					p.sendMessage(Main.p + "" + target.getName() + " in Team " + args[2] + " gesetzt");

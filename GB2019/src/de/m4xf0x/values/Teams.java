@@ -28,12 +28,21 @@ public class Teams {
 
 			if (iRed == 1) {
 
-				cfg.set("Teams.Red.Player1", red.getName());
+				if (red != null) {
+					cfg.set("Teams.Red.Player1", red.getName());
+
+				} else {
+					cfg.set("Teams.Red.Player1", "none");
+				}
 
 			} else if (iRed == 2) {
 
-				cfg.set("Teams.Red.Player2", red.getName());
+				if (red != null) {
+					cfg.set("Teams.Red.Player2", red.getName());
 
+				} else {
+					cfg.set("Teams.Red.Player2", "none");
+				}
 			}
 
 			Main.i.saveConfig();
@@ -46,12 +55,21 @@ public class Teams {
 
 			if (iGreen == 1) {
 
-				cfg.set("Teams.Green.Player1", green.getName());
+				if (green != null) {
+					cfg.set("Teams.Green.Player1", green.getName());
+
+				} else {
+					cfg.set("Teams.Green.Player1", "none");
+				}
 
 			} else if (iGreen == 2) {
 
-				cfg.set("Teams.Green.Player2", green.getName());
+				if (green != null) {
+					cfg.set("Teams.Green.Player2", green.getName());
 
+				} else {
+					cfg.set("Teams.Green.Player2", "none");
+				}
 			}
 
 			Main.i.saveConfig();
@@ -64,12 +82,21 @@ public class Teams {
 
 			if (iBlue == 1) {
 
-				cfg.set("Teams.Blue.Player1", blue.getName());
+				if (blue != null) {
+					cfg.set("Teams.Blue.Player1", blue.getName());
+
+				} else {
+					cfg.set("Teams.Blue.Player1", "none");
+				}
 
 			} else if (iBlue == 2) {
 
-				cfg.set("Teams.Blue.Player2", blue.getName());
+				if (blue != null) {
+					cfg.set("Teams.Blue.Player2", blue.getName());
 
+				} else {
+					cfg.set("Teams.Blue.Player2", "none");
+				}
 			}
 
 			Main.i.saveConfig();
@@ -115,28 +142,28 @@ public class Teams {
 			nex.printStackTrace();
 		}
 	}
-	
+
 	public static boolean isInTeam(Player p, int TeamNumber) {
-		
+
 		switch (TeamNumber) {
-		
-		case 1:	
+
+		case 1:
 			if (red[0] == p || red[1] == p) {
 				return true;
-			}	
+			}
 			break;
-		case 2:	
+		case 2:
 			if (green[0] == p || green[1] == p) {
 				return true;
-			}	
+			}
 			break;
-		case 3:	
+		case 3:
 			if (blue[0] == p || blue[1] == p) {
 				return true;
-			}	
+			}
 			break;
-		
+
 		}
-		return false;	
+		return false;
 	}
 }

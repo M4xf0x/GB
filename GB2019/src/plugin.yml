@@ -1,4 +1,4 @@
-name: GBSystem
+name: xGBSystemx
 version: 0.1
 author: M4xf0x
 main: de.m4xf0x.gb.Main
@@ -8,3 +8,5 @@ commands:
     aliases: [a, ad]
   web:
     aliases: [www, website, webside]
+  challenge:
+    aliases: [ch, challenges, pw]
