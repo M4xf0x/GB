@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -205,5 +206,25 @@ public class Events implements Listener {
 
 		}
 	}
-
+	
+	@EventHandler
+	public void onChat(AsyncPlayerChatEvent e) {
+		
+		Player p = e.getPlayer();
+		
+		if (Teams.isInTeam(p, 1)) {
+			e.setFormat("§4§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
+			
+		} else if (Teams.isInTeam(p, 2)) {
+			e.setFormat("§2§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
+			
+		} else if (Teams.isInTeam(p, 3)) {
+			e.setFormat("§3§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
+			
+		} else {
+			e.setFormat("§7" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
+			
+		}
+		
+	}
 }
