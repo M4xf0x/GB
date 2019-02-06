@@ -1,10 +1,12 @@
-package de.m4xf0x.gb;
+package de.m4xf0x.values;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
+import de.m4xf0x.gb.Main;
+
 public class Lifes {
 	
-	static int[] TeamLifes = new int[3];
+	public static int[] TeamLifes = new int[3];
 	
 	public static void load() {	
 		Main.println("Lifes - load");

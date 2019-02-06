@@ -7,6 +7,9 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import de.m4xf0x.values.Lifes;
+import de.m4xf0x.values.Teams;
+
 public class Sideboard {
 
 	@SuppressWarnings("deprecation")
@@ -63,13 +66,13 @@ public class Sideboard {
 
 		for (Player a : Bukkit.getOnlinePlayers()) {
 
-			if (Teams.red.contains(a)) {
+			if (Teams.isInTeam(a, 1)) {
 				Red.addEntry(a.getName());
 
-			} else if (Teams.green.contains(a)) {
+			} else if (Teams.isInTeam(a, 2)) {
 				Green.addEntry(a.getName());
 
-			} else if (Teams.blue.contains(a)) {
+			} else if (Teams.isInTeam(a, 3)) {
 				Blue.addEntry(a.getName());
 
 			} else {

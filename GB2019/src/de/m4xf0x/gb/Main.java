@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.m4xf0x.cmd.admin;
 import de.m4xf0x.cmd.web;
+import de.m4xf0x.values.Teams;
 import net.md_5.bungee.api.ChatColor;
 
 public class Main extends JavaPlugin {

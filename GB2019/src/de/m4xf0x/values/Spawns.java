@@ -1,9 +1,11 @@
-package de.m4xf0x.gb;
+package de.m4xf0x.values;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import de.m4xf0x.gb.Main;
 
 public class Spawns {
 
