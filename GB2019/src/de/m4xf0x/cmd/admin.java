@@ -1,12 +1,15 @@
 package de.m4xf0x.cmd;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.m4xf0x.gb.Main;
+import de.m4xf0x.gb.Timer;
 import de.m4xf0x.values.Lifes;
 import de.m4xf0x.values.Spawns;
 import de.m4xf0x.values.Teams;
@@ -34,7 +37,16 @@ public class admin implements CommandExecutor {
 			} else if (args[0].equalsIgnoreCase("setSpawn")) {
 				setSpawn(args, p);
 
-			}
+			} else if (args[0].equalsIgnoreCase("startMatch")) {
+				startMatch(args, p);
+
+			} else if (args[0].equalsIgnoreCase("setMatchTime")) {
+				setMatchTime(args, p);
+
+			} else if (args[0].equalsIgnoreCase("stopMatch")) {
+				stopMatch(args, p);
+
+			} 
 		}
 
 		return false;
@@ -276,6 +288,72 @@ public class admin implements CommandExecutor {
 
 			}
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	private void startMatch(String[] args, Player p) {
+		try {
+
+			Timer.active = true;
+			Timer.saveActive();
+			
+			Spawns.load();
+			
+			Bukkit.broadcastMessage(Main.p + "Das Match wurde gestartet! Ihr werdet in eure Basen teleportiert...");
+			
+			for (Player all : Bukkit.getOnlinePlayers()) {
+				
+				Location[] locs = Spawns.spawns;
+				
+				all.playSound(all.getLocation(), Sound.SUCCESSFUL_HIT, 10, 1);
+
+				if (Teams.isInTeam(all, 1)) {
+
+					all.teleport(locs[0]);
+
+				} else if (Teams.isInTeam(all, 2)) {
+
+					all.teleport(locs[1]);
+
+				} else if (Teams.isInTeam(all, 3)) {
+
+					all.teleport(locs[2]);
+
+				}
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	private void setMatchTime(String[] args, Player p) {
+		try {
+			
+			int amount = Integer.parseInt(args[1]);
+			
+			Timer.Time = amount;
+			Timer.saveMatchTime();
+			
+			Bukkit.broadcastMessage(Main.p + "Die Match Time wurde auf " + amount + " gesetzt");
+				
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}	
+	}
+	
+	private void stopMatch(String[] args, Player p) {
+		try {
+			
+			Timer.active = false;
+			Timer.saveActive();		
+			
+			Bukkit.broadcastMessage(Main.p + "Das Match wurde gestoppt!");
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
