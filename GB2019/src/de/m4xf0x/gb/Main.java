@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.m4xf0x.cmd.admin;
 import de.m4xf0x.cmd.challenge;
 import de.m4xf0x.cmd.web;
+import de.m4xf0x.deathmatch.DMEvents;
 import de.m4xf0x.values.Teams;
 import net.md_5.bungee.api.ChatColor;
 
@@ -27,6 +28,7 @@ public class Main extends JavaPlugin {
 		getCommand("web").setExecutor(new web());
 		getCommand("challenge").setExecutor(new challenge());
 		pm.registerEvents(new Events(), this);
+		pm.registerEvents(new DMEvents(), this);
 		
 		Timer.Time = 0;
 		Timer.start();

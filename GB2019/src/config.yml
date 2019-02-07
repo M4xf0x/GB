@@ -37,7 +37,7 @@ Lifes:
   Team3: 3
 
 Match:
-  Active: true 
+  Active: false 
   Time: 0
    
 Deathmatch:

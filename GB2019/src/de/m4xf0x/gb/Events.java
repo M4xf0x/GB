@@ -3,6 +3,7 @@ package de.m4xf0x.gb;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import de.m4xf0x.values.Lifes;
+import de.m4xf0x.values.Spawns;
 import de.m4xf0x.values.Teams;
 
 public class Events implements Listener {
@@ -84,6 +86,24 @@ public class Events implements Listener {
 		// Normal Shit Here
 
 		spawnProtection.put(p, true);
+
+		Spawns.load();
+
+		Location[] locs = Spawns.spawns;
+
+		if (Teams.isInTeam(p, 1)) {
+
+			e.setRespawnLocation(locs[0]);
+
+		} else if (Teams.isInTeam(p, 2)) {
+
+			e.setRespawnLocation(locs[1]);
+
+		} else if (Teams.isInTeam(p, 3)) {
+
+			e.setRespawnLocation(locs[2]);
+
+		}
 
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.i, new Runnable() {
 
@@ -206,25 +226,25 @@ public class Events implements Listener {
 
 		}
 	}
-	
+
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent e) {
-		
+
 		Player p = e.getPlayer();
-		
+
 		if (Teams.isInTeam(p, 1)) {
 			e.setFormat("§4§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
-			
+
 		} else if (Teams.isInTeam(p, 2)) {
 			e.setFormat("§2§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
-			
+
 		} else if (Teams.isInTeam(p, 3)) {
 			e.setFormat("§3§l" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
-			
+
 		} else {
 			e.setFormat("§7" + p.getName() + " §8» §7" + e.getMessage().replaceAll("&", "§"));
-			
+
 		}
-		
+
 	}
 }

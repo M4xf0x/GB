@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import de.m4xf0x.deathmatch.Deathmatch;
 import de.m4xf0x.gb.Main;
 import de.m4xf0x.gb.Timer;
 import de.m4xf0x.values.Lifes;
@@ -46,7 +47,19 @@ public class admin implements CommandExecutor {
 			} else if (args[0].equalsIgnoreCase("stopMatch")) {
 				stopMatch(args, p);
 
-			} 
+			} else if (args[0].equalsIgnoreCase("startDeathmatch")) {
+				startDeathmatch(args, p);
+
+			} else if (args[0].equalsIgnoreCase("cancelDeathmatch")) {
+				cancelDeathmatch(args, p);
+
+			} else if (args[0].equalsIgnoreCase("setDeathmatchBuild")) {
+				setDeathmatchBuild(args, p);
+
+			} else if (args[0].equalsIgnoreCase("setDeathmatchActive")) {
+				setDeathmatchActive(args, p);
+
+			}
 		}
 
 		return false;
@@ -299,15 +312,15 @@ public class admin implements CommandExecutor {
 
 			Timer.active = true;
 			Timer.saveActive();
-			
+
 			Spawns.load();
-			
+
 			Bukkit.broadcastMessage(Main.p + "Das Match wurde gestartet! Ihr werdet in eure Basen teleportiert...");
-			
+
 			for (Player all : Bukkit.getOnlinePlayers()) {
-				
+
 				Location[] locs = Spawns.spawns;
-				
+
 				all.playSound(all.getLocation(), Sound.SUCCESSFUL_HIT, 10, 1);
 
 				if (Teams.isInTeam(all, 1)) {
@@ -330,30 +343,96 @@ public class admin implements CommandExecutor {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	private void setMatchTime(String[] args, Player p) {
 		try {
-			
+
 			int amount = Integer.parseInt(args[1]);
-			
+
 			Timer.Time = amount;
 			Timer.saveMatchTime();
-			
+
 			Bukkit.broadcastMessage(Main.p + "Die Match Time wurde auf " + amount + " gesetzt");
-				
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		}	
+		}
 	}
-	
+
 	private void stopMatch(String[] args, Player p) {
 		try {
-			
+
 			Timer.active = false;
-			Timer.saveActive();		
-			
+			Timer.saveActive();
+
 			Bukkit.broadcastMessage(Main.p + "Das Match wurde gestoppt!");
-			
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void startDeathmatch(String[] args, Player p) {
+		try {
+
+			if (args.length == 2) {
+				
+				if (args[1].equalsIgnoreCase("now") || args[1] == null) {
+					Deathmatch.countdown();
+					
+				}
+				
+			} else {
+				Deathmatch.delay();
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void cancelDeathmatch(String[] args, Player p) {
+		try {
+
+			Bukkit.getScheduler().cancelTask(Deathmatch.TID);
+			Bukkit.broadcastMessage(Main.p + "Das Deathmatch wurde abgebrochen!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void setDeathmatchBuild(String[] args, Player p) {
+		try {
+
+			if (args[1].equalsIgnoreCase("true") || args[1].equalsIgnoreCase("allow")) {
+				Deathmatch.build = true;
+				Deathmatch.saveBuild();
+
+			} else if (args[1].equalsIgnoreCase("false") || args[1].equalsIgnoreCase("deny")) {
+				Deathmatch.build = false;
+				Deathmatch.saveBuild();
+
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void setDeathmatchActive(String[] args, Player p) {
+		try {
+
+			if (args[1].equalsIgnoreCase("true") || args[1].equalsIgnoreCase("allow")) {
+				Deathmatch.active = true;
+				Deathmatch.saveActive();
+
+			} else if (args[1].equalsIgnoreCase("false") || args[1].equalsIgnoreCase("deny")) {
+				Deathmatch.active = false;
+				Deathmatch.saveActive();
+
+			}
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
