@@ -1,11 +1,14 @@
 package de.m4xf0x.deathmatch;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
@@ -20,7 +23,7 @@ public class DMEvents implements Listener {
 			e.setCancelled(true);
 		}
 	}
-	
+
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
 
@@ -50,10 +53,20 @@ public class DMEvents implements Listener {
 					p.setAllowFlight(true);
 					p.setFlying(true);
 
-					// TODO e.setRespawnLocation(DMSpawns);
+					e.setRespawnLocation(DMSpawns.DMSpawns[3]);
 
 				}
 			}
 		}, 20);
+	}
+
+	@EventHandler
+	public void onGroundHit(EntityChangeBlockEvent e) {
+
+		if (Deathmatch.running) {
+			if (e.getEntity() instanceof FallingBlock && e.getEntityType() == EntityType.FALLING_BLOCK) {
+				e.setCancelled(true);
+			}
+		}
 	}
 }

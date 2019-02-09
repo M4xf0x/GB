@@ -80,4 +80,33 @@ Spawns:
     z: 50
     yaw: 10
     pitch: 10
-    
+DMSpawns:
+  World: world
+  Team1:
+    Ready: false 
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10
+  Team2:
+    Ready: false
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10
+  Team3:
+    Ready: false
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10 
+  Middle:
+    Ready: false
+    x: 50
+    y: 50
+    z: 50
+    yaw: 10
+    pitch: 10 

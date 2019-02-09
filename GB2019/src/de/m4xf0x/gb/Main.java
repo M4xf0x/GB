@@ -7,15 +7,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.m4xf0x.cmd.admin;
 import de.m4xf0x.cmd.challenge;
 import de.m4xf0x.cmd.web;
+import de.m4xf0x.deathmatch.DMCommand;
 import de.m4xf0x.deathmatch.DMEvents;
 import de.m4xf0x.values.Teams;
-import net.md_5.bungee.api.ChatColor;
+
 
 public class Main extends JavaPlugin {
 	
 	public static Main i;
 	public static String p = " §8[§3System§8] §7";
-	public static String consoleP = "§8[§3System§8] " + ChatColor.RESET;
+	public static String consoleP = "§8[§3System§8] " + org.bukkit.ChatColor.RESET;
 	
 	public void onEnable() {
 		i = this;
@@ -27,6 +28,7 @@ public class Main extends JavaPlugin {
 		getCommand("admin").setExecutor(new admin());
 		getCommand("web").setExecutor(new web());
 		getCommand("challenge").setExecutor(new challenge());
+		getCommand("dm").setExecutor(new DMCommand());
 		pm.registerEvents(new Events(), this);
 		pm.registerEvents(new DMEvents(), this);
 		

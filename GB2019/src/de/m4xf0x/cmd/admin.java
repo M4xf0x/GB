@@ -378,8 +378,12 @@ public class admin implements CommandExecutor {
 			if (args.length == 2) {
 				
 				if (args[1].equalsIgnoreCase("now") || args[1] == null) {
-					Deathmatch.countdown();
 					
+					if (Bukkit.getScheduler().isCurrentlyRunning(Deathmatch.TID) || Bukkit.getScheduler().isQueued(Deathmatch.TID)) {
+						Bukkit.getScheduler().cancelTask(Deathmatch.TID);
+					}
+					
+					Deathmatch.countdown();
 				}
 				
 			} else {

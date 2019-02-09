@@ -10,3 +10,4 @@ commands:
     aliases: [www, website, webside]
   challenge:
     aliases: [ch, challenges, pw]
+  dm:
