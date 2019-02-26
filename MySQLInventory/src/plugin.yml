@@ -1,0 +1,8 @@
+name: MySQLInventory
+author: M4xf0x
+main: de.m4xf0x.msi.MySQLInventory
+version: 0.5
+
+commands:
+  inventory:
+    aliases: [inv]
